@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — CSSA, PDUAM</title>
+<meta name="description" content="Photos from CSSA workshops, hackathons, and events.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <span class="brand-text"><span class="b1">CSSA</span><br><span class="b2">Computer Science Students' Association · PDUAM</span></span>
+    </a>
+    <nav class="nav" id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="academics.html">Academics</a>
+      <a href="projects.html">Projects</a>
+      <a href="activities.html">Activities &amp; Events</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow">Gallery</div>
+      <h1>A visual archive of CSSA</h1>
+      <p>Faces, workshops, and moments that define the CSSA experience — check back often as we add photos from each new event.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" data-filter-group>
+      <div class="events-tools">
+        <div class="field">
+          <label for="gallery-filter">Filter for</label>
+          <select id="gallery-filter" data-filter-select>
+            <option value="all">Select one…</option>
+            <option value="workshop">Workshops</option>
+            <option value="hackathon">Hackathons</option>
+            <option value="social">Socials</option>
+            <option value="talk">Talks</option>
+          </select>
+          <a href="#" class="reset-link" data-filter-reset>Reset</a>
+        </div>
+        <div class="field">
+          <label for="gallery-search">Search</label>
+          <input type="text" id="gallery-search" placeholder="Search photos…" data-filter-search>
+        </div>
+      </div>
+
+      <div class="gallery-grid" style="margin-top:32px;">
+        <div data-filter-item data-tags="workshop" data-title="Git workshop" class="ph g-tall ph-circuit"><span class="ph-label">Workshop photo</span></div>
+        <div data-filter-item data-tags="hackathon" data-title="CodeSprint teams" class="ph ph-square ph-code"><span class="ph-label">Hackathon photo</span></div>
+        <div data-filter-item data-tags="social" data-title="Freshers meetup" class="ph ph-square ph-grid"><span class="ph-label">Social photo</span></div>
+        <div data-filter-item data-tags="hackathon" data-title="CodeSprint winners" class="ph g-tall ph-dotmap"><span class="ph-label">Hackathon photo</span></div>
+        <div data-filter-item data-tags="talk" data-title="Careers talk" class="ph ph-square ph-circuit"><span class="ph-label">Talk photo</span></div>
+        <div data-filter-item data-tags="workshop" data-title="Web dev workshop" class="ph ph-square ph-grid"><span class="ph-label">Workshop photo</span></div>
+        <div data-filter-item data-tags="social" data-title="Department social" class="ph g-tall ph-code"><span class="ph-label">Social photo</span></div>
+        <div data-filter-item data-tags="talk" data-title="ML talk" class="ph ph-square ph-dotmap"><span class="ph-label">Talk photo</span></div>
+        <div data-filter-item data-tags="hackathon" data-title="CodeSprint venue" class="ph ph-square ph-circuit"><span class="ph-label">Hackathon photo</span></div>
+        <div data-filter-item data-tags="workshop" data-title="Orientation session" class="ph g-tall ph-grid"><span class="ph-label">Workshop photo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap statement">
+      <div>
+        <div class="eyebrow">Strong Bonds</div>
+        <h2>Campus rooted, industry connected</h2>
+        <p>Every workshop, hackathon, and late study session adds to the CSSA story — a record of a department building skills together, one event at a time.</p>
+        <p>Have photos from a CSSA event? <a href="contact.html" style="text-decoration:underline;">Send them our way</a> and we'll add them here.</p>
+      </div>
+      <div class="globe-wrap">
+        <div class="globe ph ph-dotmap"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-card">
+      <div class="brand">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <span class="brand-text"><span class="b1">CSSA</span><br><span class="b2">Computer Science Students' Association · PDUAM</span></span>
+      </div>
+      <div>
+        <div style="font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;text-align:right;">Find us on socials</div>
+        <div class="social"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="GitHub">GH</a><a href="#" aria-label="LinkedIn">LI</a></div>
+      </div>
+    </div>
+    <p class="copyright">Copyright © 2026 PDUAM Computer Science Students' Association. All rights reserved.</p>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
