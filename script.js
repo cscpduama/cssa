@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Clean leading and trailing slashes
       href = href.replace(/^\//, '').replace(/\.html$/, '');
       
-      // Map to local .html file so GitHub Pages / static servers can resolve the request
-      link.setAttribute('href', basePath + '/' + href + '.html');
+      // Map to clean path subpath routing
+      link.setAttribute('href', basePath + '/' + href);
     }
   });
 
