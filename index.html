@@ -185,34 +185,52 @@
 
   <!-- ACTIVITIES PREVIEW -->
   <section id="activities">
-    <div class="wrap">
-      <div class="eyebrow">Activities</div>
-      <div class="two-col">
-        <div>
-          <h3 class="section-title" style="margin-bottom:14px;">Upcoming Events</h3>
-          <p style="color:var(--ink-soft);">From workshops to hackathons, our calendar is packed with moments to learn, build, and connect. There's always something happening in the CSSA community.</p>
-        </div>
-        <div>
+    <div class="wrap two-col-layout">
+      <!-- Left Column (Sticky) -->
+      <div class="about-left-sticky">
+        <div class="eyebrow">Activities</div>
+        <h3 class="section-title" style="margin-bottom:14px;">Upcoming Events</h3>
+        <p style="color:var(--ink-soft);">From workshops to hackathons, our calendar is packed with moments to learn, build, and connect. There's always something happening in the CSSA community.</p>
+      </div>
+      
+      <!-- Right Column (Scrolling) -->
+      <div class="about-right-scroll">
+        <div class="scroll-content-block">
           <div class="event-row" style="border-top:none; padding-top:0;">
-            <div>
-              <div class="event-meta"><span>DEC 20, 2025</span><span class="tag">| Workshop</span></div>
-              <div class="event-title" style="font-size:19px;">Git &amp; GitHub for Beginners</div>
+            <div class="event-header-row">
+              <div>
+                <div class="event-meta"><span>DEC 20, 2025</span><span class="tag">| Workshop</span></div>
+                <div class="event-title" style="font-size:19px;">Git &amp; GitHub for Beginners</div>
+              </div>
+              <div class="event-plus">+</div>
             </div>
-            <div class="event-plus">+</div>
+            <div class="event-accordion-body">
+              <p>A hands-on coding workshop helping students master version control concepts, branching workflows, pull requests, and collaborative repository management on GitHub.</p>
+            </div>
           </div>
           <div class="event-row">
-            <div>
-              <div class="event-meta"><span>DEC 15, 2025</span><span class="tag">| Hackathon</span></div>
-              <div class="event-title" style="font-size:19px;">CodeSprint 2025</div>
+            <div class="event-header-row">
+              <div>
+                <div class="event-meta"><span>DEC 15, 2025</span><span class="tag">| Hackathon</span></div>
+                <div class="event-title" style="font-size:19px;">CodeSprint 2025</div>
+              </div>
+              <div class="event-plus">+</div>
             </div>
-            <div class="event-plus">+</div>
+            <div class="event-accordion-body">
+              <p>Our premier programming tournament testing data structures, search algorithms, and logical coding speed across multiple difficulty tiers. Winners will be awarded department certificates.</p>
+            </div>
           </div>
           <div class="event-row">
-            <div>
-              <div class="event-meta"><span>DEC 10, 2025</span><span class="tag">| Talk</span></div>
-              <div class="event-title" style="font-size:19px;">Careers in Software Engineering</div>
+            <div class="event-header-row">
+              <div>
+                <div class="event-meta"><span>DEC 10, 2025</span><span class="tag">| Talk</span></div>
+                <div class="event-title" style="font-size:19px;">Careers in Software Engineering</div>
+              </div>
+              <div class="event-plus">+</div>
             </div>
-            <div class="event-plus">+</div>
+            <div class="event-accordion-body">
+              <p>An interactive panel inviting system developers and tech alumni to discuss career preparation, interview patterns, and fields like database administration, network engineering, and frontend design.</p>
+            </div>
           </div>
           <a href="activities.html" class="card-link" style="margin-top:22px;">View all events <span class="dot">›</span></a>
         </div>
