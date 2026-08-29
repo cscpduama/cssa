@@ -8,7 +8,7 @@
     window.location.replace('https://csc.pduamamjonga.in' + window.location.pathname.replace(/^\/CSSA/i, '/cssa'));
   }
   */
-  if (window.location.hostname === 'csc.pduamamjonga.in') {
+  if (window.location.hostname === 'csc.pduamamjonga.in' || window.location.hostname === 'cscpduama.github.io') {
     const base = document.createElement('base');
     base.href = '/cssa/';
     document.head.insertBefore(base, document.head.firstChild);
