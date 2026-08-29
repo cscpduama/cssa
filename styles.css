@@ -405,5 +405,66 @@ section.tight{ padding:64px 0; }
 .color-2{ --card-color:#8a7a3a; }
 .color-3{ --card-color:#9c5da0; }
 .color-4{ --card-color:#4f8a5f; }
-.color-5{ --card-color:#3f6f8a; }
 .color-6{ --card-color:#7a1e1e; }
+
+/* ---------- Sticky Column About Layout ---------- */
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-left-sticky {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.about-right-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+}
+
+.scroll-content-block {
+  padding-bottom: 24px;
+}
+
+.about-right-scroll .obj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.about-right-scroll .team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .two-col-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .about-left-sticky {
+    position: static;
+  }
+  .about-right-scroll {
+    gap: 56px;
+  }
+  .about-right-scroll .obj-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-right-scroll .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-right-scroll .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
