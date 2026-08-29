@@ -56,4 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Mobile Nav Toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.getElementById('site-nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      siteNav.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+  }
 });
