@@ -5,12 +5,17 @@
   if (window.location.hostname === 'cscpduama.github.io') {
     window.location.replace('https://csc.pduamamjonga.in' + window.location.pathname.replace(/^\/CSSA/i, '/cssa'));
   }
+  if (window.location.hostname === 'csc.pduamamjonga.in') {
+    const base = document.createElement('base');
+    base.href = '/cssa/';
+    document.head.insertBefore(base, document.head.firstChild);
+  }
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CSSA — Computer Science Students' Association, PDUAM</title>
 <meta name="description" content="The Computer Science Students' Association at PDUAM — community, curriculum, and career for CS students in Amjonga, Assam.">
-<link rel="stylesheet" href="/cssa/styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -270,6 +275,6 @@
   </div>
 </footer>
 
-<script src="/cssa/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
