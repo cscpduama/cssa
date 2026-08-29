@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  if (window.location.hostname === 'cscpduama.github.io') {
+    window.location.replace('https://csc.pduamamjonga.in' + window.location.pathname.replace(/^\/CSSA/i, '/cssa'));
+  }
+  if (window.location.hostname === 'csc.pduamamjonga.in' && window.location.pathname === '/cssa') {
+    window.location.replace('https://csc.pduamamjonga.in/cssa/');
+  }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Activities & Events — CSSA, PDUAM</title>
