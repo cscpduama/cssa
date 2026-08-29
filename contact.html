@@ -69,134 +69,138 @@
 </header>
 
 <main>
-  <section class="hero" style="padding-top:56px;">
+  <section class="hero" style="padding-top:56px; padding-bottom: 32px;">
     <div class="wrap">
-      <h1 style="font-size:clamp(38px,7vw,74px);">Contact</h1>
-      <div class="hero-meta" style="align-items:flex-start;">
-        <div class="page-links">
-          <span class="label">Page content&nbsp;|</span>
-          <a href="#faqs">FAQs</a>
-        </div>
-        <div class="reach-box">
-          <div class="eyebrow">Reach Us</div>
-          <div class="reach-item">
-            <div class="rk">General Inquiries</div>
-            <div class="rv"><a href="mailto:cssa@pduamamjonga.in">cssa@pduamamjonga.in</a></div>
-          </div>
-          <div class="reach-item">
-            <div class="rk">Department</div>
-            <div class="rv">CS Department block, PDUAM, Amjonga, Assam</div>
-          </div>
-          <div class="reach-item">
-            <div class="rk">Office hours</div>
-            <div class="rv">Mon–Fri, during college hours</div>
-          </div>
-        </div>
+      <h1 style="font-size:clamp(38px,7vw,74px); margin-bottom: 24px;">Contact</h1>
+      
+      <div class="page-links" style="margin-bottom: 36px; border-bottom: none; padding-bottom: 0;">
+        <span class="label">Page content&nbsp;|</span>
+        <a href="#faqs">FAQs</a>
       </div>
 
+      <div class="reach-box" style="max-width: 580px;">
+        <div class="eyebrow">Reach Us</div>
+        <div class="reach-item">
+          <div class="rk">General Inquiries</div>
+          <div class="rv"><a href="mailto:cssa.pduama@gmail.com">cssa.pduama@gmail.com</a></div>
+        </div>
+        <div class="reach-item">
+          <div class="rk">Department</div>
+          <div class="rv">CS Department block, PDUAM, Amjonga, Assam</div>
+        </div>
+        <div class="reach-item">
+          <div class="rk">Office hours</div>
+          <div class="rv">Mon–Fri, during college hours</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="faqs">
     <div class="wrap" data-filter-group>
-      <div class="eyebrow">FAQs</div>
-      <div class="two-col">
-        <div>
+      <div class="two-col-layout">
+        <!-- Left Column (Sticky) -->
+        <div class="about-left-sticky">
+          <div class="eyebrow">FAQs</div>
           <h3 class="section-title" style="margin-bottom:14px;">Frequently Asked Questions</h3>
           <p style="color:var(--ink-soft);">Curious about how to get involved, join a team, or attend an event? Find quick answers below.</p>
         </div>
-        <div>
-          <div class="events-tools" style="margin-bottom:0;">
-            <div class="field">
-              <label for="faq-filter">Filter for</label>
-              <select id="faq-filter" data-filter-select>
-                <option value="all">Select one…</option>
-                <option value="membership">Membership</option>
-                <option value="events">Events</option>
-                <option value="projects">Projects</option>
-                <option value="academics">Academics</option>
-              </select>
-              <a href="#" class="reset-link" data-filter-reset>Reset</a>
+        
+        <!-- Right Column (Scrolling) -->
+        <div class="about-right-scroll">
+          <div class="scroll-content-block">
+            <div class="events-tools" style="margin-bottom:24px;">
+              <div class="field">
+                <label for="faq-filter">Filter for</label>
+                <select id="faq-filter" data-filter-select>
+                  <option value="all">Select one…</option>
+                  <option value="membership">Membership</option>
+                  <option value="events">Events</option>
+                  <option value="projects">Projects</option>
+                  <option value="academics">Academics</option>
+                </select>
+                <a href="#" class="reset-link" data-filter-reset>Reset</a>
+              </div>
+              <div class="field">
+                <label for="faq-search">Search</label>
+                <input type="text" id="faq-search" placeholder="Search FAQs…" data-filter-search>
+              </div>
             </div>
-            <div class="field">
-              <label for="faq-search">Search</label>
-              <input type="text" id="faq-search" placeholder="Search FAQs…" data-filter-search>
-            </div>
-          </div>
 
-          <!-- FAQ 1 -->
-          <div data-filter-item data-tags="membership projects" data-title="How do I join CSSA" class="list-row">
-            <div class="list-header-row">
-              <div>
-                <div class="list-tags"><span>Membership</span><span>Projects</span></div>
-                <div class="list-title">How do I join CSSA?</div>
+            <!-- FAQ 1 -->
+            <div data-filter-item data-tags="membership projects" data-title="How do I join CSSA" class="list-row">
+              <div class="list-header-row">
+                <div>
+                  <div class="list-tags"><span>Membership</span><span>Projects</span></div>
+                  <div class="list-title">How do I join CSSA?</div>
+                </div>
+                <div class="list-plus">+</div>
               </div>
-              <div class="list-plus">+</div>
-            </div>
-            <div class="list-accordion-body">
-              <p>All Computer Science department students at PDUAM Amjonga are automatically members. You can participate in all our activities, bootcamps, and projects by attending our meetings or joining our online group.</p>
-            </div>
-          </div>
-          
-          <!-- FAQ 2 -->
-          <div data-filter-item data-tags="events" data-title="What events does CSSA host" class="list-row">
-            <div class="list-header-row">
-              <div>
-                <div class="list-tags"><span>Events</span></div>
-                <div class="list-title">What events does CSSA host?</div>
+              <div class="list-accordion-body">
+                <p>All Computer Science department students at PDUAM Amjonga are automatically members. You can participate in all our activities, bootcamps, and projects by attending our meetings or joining our online group.</p>
               </div>
-              <div class="list-plus">+</div>
             </div>
-            <div class="list-accordion-body">
-              <p>We organize beginner-friendly workshops (like Git, web development, and Python), annual coding sprints, hackathons, and seminars led by system developers and tech alumni.</p>
-            </div>
-          </div>
-          
-          <!-- FAQ 3 -->
-          <div data-filter-item data-tags="academics projects" data-title="Can first year students join projects" class="list-row">
-            <div class="list-header-row">
-              <div>
-                <div class="list-tags"><span>Academics</span><span>Projects</span></div>
-                <div class="list-title">Can first-year students join a project team?</div>
+            
+            <!-- FAQ 2 -->
+            <div data-filter-item data-tags="events" data-title="What events does CSSA host" class="list-row">
+              <div class="list-header-row">
+                <div>
+                  <div class="list-tags"><span>Events</span></div>
+                  <div class="list-title">What events does CSSA host?</div>
+                </div>
+                <div class="list-plus">+</div>
               </div>
-              <div class="list-plus">+</div>
-            </div>
-            <div class="list-accordion-body">
-              <p>Absolutely! We encourage first-semester students to participate. We pair beginners with senior mentors so you can learn practical coding workflows and Git collaborations on real-world projects.</p>
-            </div>
-          </div>
-          
-          <!-- FAQ 4 -->
-          <div data-filter-item data-tags="membership" data-title="Is there a membership fee" class="list-row">
-            <div class="list-header-row">
-              <div>
-                <div class="list-tags"><span>Membership</span></div>
-                <div class="list-title">Is there a membership fee?</div>
+              <div class="list-accordion-body">
+                <p>We organize beginner-friendly workshops (like Git, web development, and Python), annual coding sprints, hackathons, and seminars led by system developers and tech alumni.</p>
               </div>
-              <div class="list-plus">+</div>
             </div>
-            <div class="list-accordion-body">
-              <p>No, there is no membership fee. All CSSA workshops, resource files, coding contests, and events are completely free of charge for students enrolled in the CS department at PDUAM.</p>
-            </div>
-          </div>
-          
-          <!-- FAQ 5 -->
-          <div data-filter-item data-tags="events academics" data-title="How do I suggest a workshop topic" class="list-row">
-            <div class="list-header-row">
-              <div>
-                <div class="list-tags"><span>Events</span><span>Academics</span></div>
-                <div class="list-title">How do I suggest a workshop topic?</div>
+            
+            <!-- FAQ 3 -->
+            <div data-filter-item data-tags="academics projects" data-title="Can first year students join projects" class="list-row">
+              <div class="list-header-row">
+                <div>
+                  <div class="list-tags"><span>Academics</span><span>Projects</span></div>
+                  <div class="list-title">Can first-year students join a project team?</div>
+                </div>
+                <div class="list-plus">+</div>
               </div>
-              <div class="list-plus">+</div>
+              <div class="list-accordion-body">
+                <p>Absolutely! We encourage first-semester students to participate. We pair beginners with senior mentors so you can learn practical coding workflows and Git collaborations on real-world projects.</p>
+              </div>
             </div>
-            <div class="list-accordion-body">
-              <p>We love student suggestions! You can pitch workshop ideas or request tutorial topics by filling out our contact form below or speaking directly with any of the Core Committee members.</p>
+            
+            <!-- FAQ 4 -->
+            <div data-filter-item data-tags="membership" data-title="Is there a membership fee" class="list-row">
+              <div class="list-header-row">
+                <div>
+                  <div class="list-tags"><span>Membership</span></div>
+                  <div class="list-title">Is there a membership fee?</div>
+                </div>
+                <div class="list-plus">+</div>
+              </div>
+              <div class="list-accordion-body">
+                <p>No, there is no membership fee. All CSSA workshops, resource files, coding contests, and events are completely free of charge for students enrolled in the CS department at PDUAM.</p>
+              </div>
             </div>
-          </div>
+            
+            <!-- FAQ 5 -->
+            <div data-filter-item data-tags="events academics" data-title="How do I suggest a workshop topic" class="list-row">
+              <div class="list-header-row">
+                <div>
+                  <div class="list-tags"><span>Events</span><span>Academics</span></div>
+                  <div class="list-title">How do I suggest a workshop topic?</div>
+                </div>
+                <div class="list-plus">+</div>
+              </div>
+              <div class="list-accordion-body">
+                <p>We love student suggestions! You can pitch workshop ideas or request tutorial topics by filling out our contact form below or speaking directly with any of the Core Committee members.</p>
+              </div>
+            </div>
 
-          <div class="pagination">
-            <span class="num active">1</span>
-            <span class="num">2</span>
+            <div class="pagination" style="margin-top: 32px;">
+              <span class="num active">1</span>
+              <span class="num">2</span>
+            </div>
           </div>
         </div>
       </div>
