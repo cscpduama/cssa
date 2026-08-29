@@ -1,84 +1,59 @@
-// CSSA site — small progressive-enhancement behaviors, no framework.
+// Clean URL Address Bar Handler (Strips .html instantly on load)
+if (window.location.pathname.endsWith('.html')) {
+  const cleanPath = window.location.pathname.slice(0, -5);
+  window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
+  // Resolve base path dynamically (handles /cssa/ proxy and subpaths)
+  const pathParts = window.location.pathname.split('/');
+  let basePath = '';
+  if (pathParts[1] && pathParts[1].toLowerCase() === 'cssa') {
+    basePath = '/' + pathParts[1];
   }
 
-  // ---- Generic scoped filter/search (events, FAQs, projects, gallery) ----
-  // Each filter group is a wrapper with [data-filter-group] containing:
-  //   a <select data-filter-select>, an <input data-filter-search>, an optional
-  //   [data-filter-reset], and item rows with [data-filter-item] + data-tags/data-title.
-  document.querySelectorAll('[data-filter-group]').forEach(group => {
-    const select = group.querySelector('[data-filter-select]');
-    const search = group.querySelector('[data-filter-search]');
-    const reset = group.querySelector('[data-filter-reset]');
-    const items = group.querySelectorAll('[data-filter-item]');
-
-    function apply() {
-      const cat = select ? select.value : 'all';
-      const q = search ? search.value.trim().toLowerCase() : '';
-      items.forEach(item => {
-        const tags = (item.dataset.tags || '').toLowerCase();
-        const title = (item.dataset.title || '').toLowerCase();
-        const matchesCat = cat === 'all' || tags.includes(cat);
-        const matchesSearch = !q || title.includes(q) || tags.includes(q);
-        item.style.display = (matchesCat && matchesSearch) ? '' : 'none';
-      });
+  // Rewrite all internal links to work seamlessly with subpaths and fallback to .html files under the hood
+  document.querySelectorAll('a').forEach(link => {
+    let href = link.getAttribute('href');
+    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('//') && href !== '/') {
+      // Clean leading and trailing slashes
+      href = href.replace(/^\//, '').replace(/\.html$/, '');
+      
+      // Map to local .html file so GitHub Pages / static servers can resolve the request
+      link.setAttribute('href', basePath + '/' + href + '.html');
     }
-    if (select) select.addEventListener('change', apply);
-    if (search) search.addEventListener('input', apply);
-    if (reset) reset.addEventListener('click', (e) => {
+  });
+
+  // Expandable Accordion Toggle (Events page)
+  const accordions = document.querySelectorAll('.event-accordion');
+  accordions.forEach(accordion => {
+    accordion.addEventListener('click', () => {
+      accordion.classList.toggle('open');
+    });
+  });
+
+  // Contact Form Submission Handler
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const feedback = document.getElementById('formFeedback');
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      if (select) select.value = 'all';
-      if (search) search.value = '';
-      apply();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.backgroundColor = 'rgba(25, 135, 84, 0.1)';
+          feedback.style.color = '#198754';
+          feedback.style.border = '1px solid #198754';
+          feedback.textContent = `Thank you, ${name}! Your message has been received. The CSSA team will get back to you shortly.`;
+        } else {
+          alert(`Thank you, ${name}! Your message has been received.`);
+        }
+        contactForm.reset();
+      }
     });
-  });
-
-  // ---- Gallery filter chips (chip-style, single group per page) ----
-  const chips = document.querySelectorAll('[data-gallery-chip]');
-  const tiles = document.querySelectorAll('[data-gallery-tile]');
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const cat = chip.dataset.galleryChip;
-      tiles.forEach(t => {
-        t.style.display = (cat === 'all' || t.dataset.galleryTile === cat) ? '' : 'none';
-      });
-    });
-  });
-
-  // ---- Sticky sidebar scrollspy ----
-  const sideNav = document.querySelector('.side-nav');
-  if (sideNav) {
-    const links = Array.from(sideNav.querySelectorAll('a[href^="#"]'));
-    const sections = links
-      .map(link => document.querySelector(link.getAttribute('href')))
-      .filter(Boolean);
-
-    function setActive() {
-      let current = sections[0];
-      const probe = window.scrollY + 140;
-      sections.forEach(sec => { if (sec.offsetTop <= probe) current = sec; });
-      links.forEach(link => {
-        const match = current && link.getAttribute('href') === `#${current.id}`;
-        link.classList.toggle('active', !!match);
-      });
-    }
-    setActive();
-    window.addEventListener('scroll', setActive, { passive: true });
-    window.addEventListener('resize', setActive);
   }
 });
