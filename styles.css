@@ -468,3 +468,59 @@ section.tight{ padding:64px 0; }
   }
 }
 
+
+/* ---------- Event Row Accordion Styles ---------- */
+.event-row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+  cursor: pointer;
+}
+.event-row .event-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.event-row .event-plus {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  flex: none;
+}
+.event-row.open .event-plus {
+  transform: rotate(45deg);
+}
+.event-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+  padding: 0;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.event-row.open .event-accordion-body {
+  max-height: 200px;
+  margin-top: 14px;
+}
+
+/* ---------- Page Fade-In Transition ---------- */
+body {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+body.loaded {
+  opacity: 1;
+}
+
+/* ---------- Global Interactive Transitions ---------- */
+a, button, .nav-cta, .card, .event-row, .accordion-icon, .nav-toggle {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Card hover animation */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(32, 28, 22, 0.04);
+}

@@ -68,4 +68,111 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.classList.toggle('active');
     });
   }
+
+  // --- Client-Side Search, Filter, and Pagination for Activities Page ---
+  const eventRows = document.querySelectorAll('.event-row');
+  const eventFilter = document.getElementById('event-filter');
+  const eventSearch = document.getElementById('event-search');
+  const paginationContainer = document.querySelector('.pagination');
+
+  if (eventRows.length > 0) {
+    let currentPage = 1;
+    const itemsPerPage = 4;
+
+    function updateEvents() {
+      const searchTerm = eventSearch ? eventSearch.value.toLowerCase().trim() : '';
+      const filterVal = eventFilter ? eventFilter.value.toLowerCase() : 'all';
+
+      // Filter rows by search and tag
+      const matchedRows = Array.from(eventRows).filter(row => {
+        const title = (row.getAttribute('data-title') || '').toLowerCase();
+        const tags = (row.getAttribute('data-tags') || '').toLowerCase();
+        
+        const matchesSearch = title.includes(searchTerm);
+        const matchesFilter = filterVal === 'all' || tags.includes(filterVal);
+        
+        return matchesSearch && matchesFilter;
+      });
+
+      // Hide all rows
+      eventRows.forEach(row => row.style.display = 'none');
+
+      // Calculate pagination slice
+      const totalItems = matchedRows.length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+      
+      // Keep currentPage in valid range
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+
+      matchedRows.slice(start, end).forEach(row => {
+        row.style.display = 'flex';
+      });
+
+      // Render pagination numbers
+      if (paginationContainer) {
+        paginationContainer.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+          const span = document.createElement('span');
+          span.className = `num${i === currentPage ? ' active' : ''}`;
+          span.textContent = i;
+          span.addEventListener('click', () => {
+            currentPage = i;
+            updateEvents();
+          });
+          paginationContainer.appendChild(span);
+        }
+      }
+    }
+
+    // Attach event listeners for filters
+    if (eventFilter) eventFilter.addEventListener('change', () => { currentPage = 1; updateEvents(); });
+    if (eventSearch) eventSearch.addEventListener('input', () => { currentPage = 1; updateEvents(); });
+    
+    const resetLink = document.querySelector('[data-filter-reset]');
+    if (resetLink) {
+      resetLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (eventFilter) eventFilter.value = 'all';
+        if (eventSearch) eventSearch.value = '';
+        currentPage = 1;
+        updateEvents();
+      });
+    }
+
+    // Initialize first page
+    updateEvents();
+
+    // Toggle event details accordion
+    eventRows.forEach(row => {
+      row.addEventListener('click', (e) => {
+        // Toggle the open class
+        row.classList.toggle('open');
+      });
+    });
+  }
+
+  // Trigger smooth page load fade-in
+  document.body.classList.add('loaded');
+
+  // Intercept hash anchor clicks for smooth offset scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 90;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
 });
