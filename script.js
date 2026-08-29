@@ -175,4 +175,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- ScrollSpy for Academics / Side Navigation Pages ---
+  const sideLinks = document.querySelectorAll('.side-nav a');
+  const sideSections = document.querySelectorAll('.side-section');
+
+  if (sideLinks.length > 0 && sideSections.length > 0) {
+    function updateActiveLink() {
+      let activeSectionId = '';
+      const scrollPos = window.scrollY || window.pageYOffset;
+
+      sideSections.forEach(section => {
+        // Offset matches the navigation scroll offset
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          activeSectionId = section.getAttribute('id');
+        }
+      });
+
+      sideLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${activeSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('resize', updateActiveLink);
+    updateActiveLink(); // Run on page load
+  }
 });
