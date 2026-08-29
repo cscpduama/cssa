@@ -207,4 +207,71 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateActiveLink);
     updateActiveLink(); // Run on page load
   }
+
+  // --- Client-Side Search, Filter, and Pagination for FAQs ---
+  const listRows = document.querySelectorAll('.list-row');
+  const faqFilter = document.getElementById('faq-filter');
+  const faqSearch = document.getElementById('faq-search');
+  const faqPaginationContainer = document.querySelector('#faqs .pagination');
+
+  if (listRows.length > 0) {
+    let currentFaqPage = 1;
+    const faqsPerPage = 4;
+
+    function updateFaqs() {
+      const searchTerm = faqSearch ? faqSearch.value.toLowerCase().trim() : '';
+      const filterVal = faqFilter ? faqFilter.value.toLowerCase() : 'all';
+
+      const matchedFaqs = Array.from(listRows).filter(row => {
+        const title = (row.getAttribute('data-title') || '').toLowerCase();
+        const tags = (row.getAttribute('data-tags') || '').toLowerCase();
+        
+        const matchesSearch = title.includes(searchTerm);
+        const matchesFilter = filterVal === 'all' || tags.includes(filterVal);
+        
+        return matchesSearch && matchesFilter;
+      });
+
+      listRows.forEach(row => row.style.display = 'none');
+
+      const totalItems = matchedFaqs.length;
+      const totalPages = Math.ceil(totalItems / faqsPerPage) || 1;
+      
+      if (currentFaqPage > totalPages) currentFaqPage = totalPages;
+      if (currentFaqPage < 1) currentFaqPage = 1;
+
+      const start = (currentFaqPage - 1) * faqsPerPage;
+      const end = start + faqsPerPage;
+
+      matchedFaqs.slice(start, end).forEach(row => {
+        row.style.display = 'flex';
+      });
+
+      if (faqPaginationContainer) {
+        faqPaginationContainer.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+          const span = document.createElement('span');
+          span.className = `num${i === currentFaqPage ? ' active' : ''}`;
+          span.textContent = i;
+          span.addEventListener('click', () => {
+            currentFaqPage = i;
+            updateFaqs();
+          });
+          faqPaginationContainer.appendChild(span);
+        }
+      }
+    }
+
+    if (faqFilter) faqFilter.addEventListener('change', () => { currentFaqPage = 1; updateFaqs(); });
+    if (faqSearch) faqSearch.addEventListener('input', () => { currentFaqPage = 1; updateFaqs(); });
+
+    // Attach click listener to toggle open FAQ accordion
+    listRows.forEach(row => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('open');
+      });
+    });
+
+    updateFaqs();
+  }
 });

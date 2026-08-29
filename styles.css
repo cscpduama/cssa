@@ -91,8 +91,9 @@ button{ font-family:inherit; cursor:pointer; }
 .nav a:hover, .nav a[aria-current="page"]{ color:var(--maroon); border-color:var(--maroon); }
 .nav-cta{
   background:var(--maroon); color:#f6efe0 !important;
-  padding:11px 22px; border-radius:999px; font-weight:600; font-size:14px;
+  padding: 14px 32px; border-radius:999px; font-weight:600; font-size:16px;
   border:2px solid var(--maroon);
+  letter-spacing: .02em;
 }
 .nav-cta:hover{ background:var(--maroon-dark); border-color:var(--maroon-dark); }
 .nav-toggle{ display:none; }
@@ -541,4 +542,40 @@ a, button, .nav-cta, .card, .event-row, .accordion-icon, .nav-toggle {
 
 .nav-toggle.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- List Row Accordion Styles ---------- */
+.list-row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+  cursor: pointer;
+}
+.list-row .list-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.list-row .list-plus {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  flex: none;
+}
+.list-row.open .list-plus {
+  transform: rotate(45deg);
+}
+.list-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+  padding: 0;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.list-row.open .list-accordion-body {
+  max-height: 200px;
+  margin-top: 14px;
 }
